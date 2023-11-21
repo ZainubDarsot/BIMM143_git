@@ -1,2 +1,2 @@
 # BIMM143_git
-F23 classwork saved here 
+My classwork for F23 in BIMM 143 at UCSD 
