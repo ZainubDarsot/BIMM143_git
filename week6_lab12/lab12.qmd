@@ -1,0 +1,29 @@
+---
+title: "Week6_Lab12"
+author: "Zainub Darsot (PID: A16294217)"
+format: pdf
+---
+
+### Section 1. Proportion of G/G in a population 
+
+Downloaded a CSV file from Ensemble 
+
+Read this CSV file
+
+```{r}
+mxl <- read.csv("373531-SampleGenotypes-Homo_sapiens_Variation_Sample_rs8067378.csv")
+
+head(mxl)
+```
+
+```{r}
+table(mxl$Genotype..forward.strand.)
+```
+
+
+```{r}
+table(mxl$Genotype..forward.strand.) / nrow(mxl) *100
+
+```
+
+  

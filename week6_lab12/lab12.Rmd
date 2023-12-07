@@ -1,0 +1,90 @@
+---
+title: "Lab12"
+author: 'Zainub Darsot (PID: A16294217)'
+date: "2023-11-11"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Section 1
+
+```{r}
+mxl <- read.csv("373531-SampleGenotypes-Homo_sapiens_Variation_Sample_rs8067378.csv")
+
+head(mxl)
+```
+
+
+```{r}
+table(mxl$Genotype..forward.strand.)
+```
+
+```{r}
+table(mxl$Genotype..forward.strand.) / nrow(mxl) *100
+```
+
+```{r}
+table(mxl$Genotype..forward.strand.) / nrow(mxl) *100
+```
+
+
+
+## Section 4: Population Scale Analysis
+
+
+```{r}
+expr <- read.table("rs8067378_ENSG00000172057.6.txt")
+head(expr)
+```
+
+Total Size: 
+```{r}
+nrow(expr)
+```
+
+
+Sample Size: 
+
+```{r}
+table(expr$geno)
+```
+
+Median Expression Levels: 
+
+A/A
+
+```{r}
+aa <- expr[which(expr$geno == "A/A"),]
+head(aa)
+median(aa$geno)
+```
+A/G
+
+```{r}
+ag <- expr[which(expr$geno == "A/G"),]
+head(ag)
+median(ag$geno)
+```
+
+G/G
+
+```{r}
+gg <- expr[which(expr$geno == "G/G"),]
+head(gg)
+median(gg$geno)
+```
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+ggplot(expr) + aes(geno, exp, fill=geno) + 
+  geom_boxplot(notch=T)
+```
+
