@@ -1,0 +1,159 @@
+---
+title: "Class 10: Structural Bioinformatics (PDB)"
+author: "Darsot (PID: A16294217)"
+format: pdf
+---
+
+### 1. Introduction RCSB Protein Data Bank 
+## The PDB Database: 
+
+First, lets see what is in the PDB structure - the main repository of protein structures. 
+
+For context, Release 2023_04 of 13-Sep-2023 of UniProtKB/TrEMBL contains 251600, 768 sequence entries. PDB only contains 
+
+Retrieve data from https://tinyurl.com/statsPDB
+
+```{r}
+stats <- read.csv("PDBstats.csv", row.names = 1 )
+stats
+```
+
+We must remove the commas from the dataset using `gsub()`: 
+
+```{r}
+x <- stats$X.ray
+x
+
+```
+
+```{r}
+as.numeric(gsub(",", "", x))
+```
+
+```{r}
+rm.comma <- function(x) {
+  as.numeric(gsub(",", "", x))
+
+}
+```
+
+Use `apply()` to remove commas from all columns in the table. 
+
+```{r}
+apply(stats, 2, "rm.comma")
+```
+
+```{r}
+pdbstats <- apply(stats, 2, "rm.comma")
+rownames(pdbstats) <- rownames(stats)
+head(pdbstats)
+
+```
+
+
+## Question 1: What percentage of structures in the PDB are solved by X-Ray and Electron Microscopy.
+
+```{r}
+totals <- apply(pdbstats, 2, sum)
+totals/totals["Total"]
+
+```
+
+```{r}
+round(totals/totals["Total"] * 100, 2)
+```
+
+The percentage of structures in PDB solved by XRay is about 84% and solved by EM is about 8%. 
+
+## Question 2: What proportion of structures in the PDB are protein?
+
+Protein Structures in PDB as a fraction of UniProt sequences
+```{r}
+round(pdbstats[1, "Total"] / sum(pdbstats[, "Total"]) * 100, 2)
+```
+
+```{r}
+round(pdbstats[, "Total"] / sum(pdbstats[, "Total"]) * 100, 2)
+
+```
+
+The proportion of structures in the pDB that are protein is about 87%. 
+
+
+## Question 3: Type HIV in the PDB website search box on the home page and determine how many HIV-1 protease structures are in the current PDB?
+
+SKIPPED 
+
+
+Protein Fractions
+
+```{r}
+round( (pdbstats[1, ]))
+```
+
+
+
+### 2. Visualizing the HIV-1 protease structure
+
+
+## Question 4: Water molecules normally have 3 atoms. Why do we see just one atom per water molecule in this structure?
+
+This figure is a 2 Angstrom structure but we need a 1 Angstrom structure to be able to see hydrogen, otherwise it is too small to see.  
+
+## Question 5: There is a critical “conserved” water molecule in the binding site. Can you identify this water molecule? What residue number does this water molecule have?
+I was able to identify a Water molecule HOH 308. 
+
+
+```{r}
+library(bio3d)
+
+pdb <- read.pdb("1hsg")
+pdb
+
+```
+
+```{r}
+head(pdb$atom)
+```
+
+## Q6: Generate and save a figure clearly showing the two distinct chains of HIV-protease along with the ligand. You might also consider showing the catalytic residues ASP 25 in each chain and the critical water (we recommend “Ball & Stick” for these side-chains). Add this figure to your Quarto document.
+
+Here is a figure of HIP-Pr with the catalytic ASP residues, the MK1 compound and all the important water 308. 
+
+![Caption](1hsg.png)
+
+
+## Q7: [Optional] As you have hopefully observed HIV protease is a homodimer (i.e. it is composed of two identical chains). With the aid of the graphic display can you identify secondary structure elements that are likely to only form in the dimer rather than the monomer?
+
+
+### Introduction to BIO3D in R
+### Predicting functional motions of a single structure
+
+
+Lets finish today with a bioinformatics calculation to predict the functional motions of a PDB structure: 
+
+```{r}
+adk <- read.pdb("6s36")
+m <- nma(adk)
+```
+
+```{r}
+plot(m)
+mktrj(m, file="adk_m7.pdb")
+```
+
+
+## 4. Comparative structure analysis of Adenylate Kinase
+
+```{r}
+# Install packages in the R console NOT your Rmd/Quarto file
+
+#install.packages("bio3d")
+#install.packages("devtools")
+#install.packages("BiocManager")
+
+#BiocManager::install("msa")
+#devtools::install_bitbucket("Grantlab/bio3d-view")
+```
+
+

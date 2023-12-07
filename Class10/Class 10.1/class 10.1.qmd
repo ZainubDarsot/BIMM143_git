@@ -1,0 +1,100 @@
+---
+title: "Class 10.1: Comparative structure analysis of Adenylate Kinase"
+author: "ZainubDarsot (PID:A16294217)"
+format: pdf
+---
+
+We need some packages. These include `bio3d` and `msa`. 
+
+The `msa` package is from BioConductor. These pacakages focus on genomics type work and are managed by the `Biocmanager package`
+
+Install `install.packages("BiocManager")`
+`BiocManager:: install("msa")` all entered in the R "brain" console.
+
+```{r}
+#load bio3d
+
+library(bio3d)
+
+#retrieve amino acid sequence
+aa <- get.seq("1ake_A")
+
+aa
+```
+
+Now I can search the PDB database for related sequences:  
+
+```{r}
+# Blast or hmmer search 
+#b <- blast.pdb(aa)
+```
+
+```{r}
+# Plot a summary of search results
+#hits <- plot(b)
+```
+
+
+```{r}
+#attributes(b)
+#head(b$hit.tbl)
+```
+
+These are the related structures in the PDB database that we found via a BLAST search...
+
+Load top-scoring hits: 
+```{r}
+hits <- NULL
+hits$pdb.id <- c("1AKE_A","8BQF_A", "4X8M_A", "6S36_A", "6RZE_A", "4X8H_A", "3HPR_A", "1E4V_A", "5EJE_A", "1E4Y_A", "3X2S_A", "6HAP_A", "6HAM_A", "4K46_A", "4NP6_A", "3GMT_A","4PZL_A")
+```
+
+Side-note: Lets annotate these structures (aka: find out what they are, what species they are from, stuff about the experiment they were solved in etc.)
+
+Use `pdb.annotate()` function: 
+```{r}
+annotate.hits <- pdb.annotate(hits$pdb.id)
+annotate.hits
+```
+
+
+```{r}
+attributes(annotate.hits)
+```
+
+```{r}
+annotate.hits <- pdb.annotate(hits$pdb.id)
+```
+
+```{r}
+#attributes(annotate.hits)
+head(annotate.hits)
+```
+
+Now we can download all these structures for further analysis with the `pdb.get()` function. 
+```{r}
+# Download related PDB files
+files <- get.pdb(hits$pdb.id, path="pdbs", split=TRUE, gzip=TRUE)
+```
+
+Now we have all the PDB related structures we can Align and Supperpose  ...
+
+```{r}
+#Align related PDB's
+pdbs <- pdbaln(files, fit = TRUE, exefile="msa")
+pdbs
+```
+
+## Principle Component Analysis: 
+
+```{r}
+# Perform PCA
+pc.xray <- pca(pdbs)
+plot(pc.xray)
+
+```
+
+```{r}
+# Visualize PC1
+pc1 <- mktrj(pc.xray, pc=1, file="pc_1.pdb")
+pc1
+```

@@ -1,0 +1,111 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://pages.ucsd.edu/~mboyle/COGS3/assignments/student-scores.html
+Subject: Data for Excel Assignment
+Date: Fri, 3 Nov 2023 21:11:37 -0700
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--7Co2eacJNm3XwjHWkTiEKMJvjtcIH7vyMz6us8Ihmb----"
+
+
+------MultipartBoundary--7Co2eacJNm3XwjHWkTiEKMJvjtcIH7vyMz6us8Ihmb----
+Content-Type: text/html
+Content-ID: <frame-17B551F6E95BE955EA5188367930A67E@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://pages.ucsd.edu/~mboyle/COGS3/assignments/student-scores.html
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"tex=
+t/html; charset=3Dwindows-1252">
+        <title>Data for Excel Assignment</title>
+    </head>
+    <body>
+            <h3>The Data: Student Scores</h3>
+                    Here is the first data table, quiz scores for a group o=
+f fictional students.
+                    The first
+                    column is the "student ID" number, followed by 4 column=
+s of quiz scores.
+                    <pre>                    A0011&nbsp;&nbsp;&nbsp;15&nbsp=
+;&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;15&nbsp;&nbsp;&nbsp;15
+                    A0021&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;13&nbsp;&nbs=
+p;&nbsp;16&nbsp;&nbsp;&nbsp;19
+                    A0024&nbsp;&nbsp;&nbsp;13&nbsp;&nbsp;&nbsp;19&nbsp;&nbs=
+p;&nbsp;14&nbsp;&nbsp;&nbsp;13
+                    A0036&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;19&nbsp;&nbs=
+p;&nbsp;20&nbsp;&nbsp;&nbsp;20
+                    A0032&nbsp;&nbsp;&nbsp;19&nbsp;&nbsp;&nbsp;16&nbsp;&nbs=
+p;&nbsp;18&nbsp;&nbsp;&nbsp;18
+                    A0002&nbsp;&nbsp;&nbsp;15&nbsp;&nbsp;&nbsp;17&nbsp;&nbs=
+p;&nbsp;13&nbsp;&nbsp;&nbsp;15
+                    A0041&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;19&nbsp;&nbs=
+p;&nbsp;19&nbsp;&nbsp;&nbsp;16
+                    A0031&nbsp;&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;17&nbsp;&nbs=
+p;&nbsp;18&nbsp;&nbsp;&nbsp;19
+                    A0012&nbsp;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;20&nbsp;&nbs=
+p;&nbsp;19&nbsp;&nbsp;&nbsp;20
+                    A0033&nbsp;&nbsp;&nbsp;11&nbsp;&nbsp;&nbsp;19&nbsp;&nbs=
+p;&nbsp;19&nbsp;&nbsp;&nbsp;18
+                    A0020&nbsp;&nbsp;&nbsp;19&nbsp;&nbsp;&nbsp;12&nbsp;&nbs=
+p;&nbsp;18&nbsp;&nbsp;&nbsp;14
+                    A0022&nbsp;&nbsp;&nbsp;18&nbsp;&nbsp;&nbsp;19&nbsp;&nbs=
+p;&nbsp;17&nbsp;&nbsp;&nbsp;17
+                    A0005&nbsp;&nbsp;&nbsp;12&nbsp;&nbsp;&nbsp;17&nbsp;&nbs=
+p;&nbsp;16&nbsp;&nbsp;&nbsp;14
+                    A0008&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;15&nbsp=
+;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;16
+                    A0030&nbsp;&nbsp;&nbsp;13&nbsp;&nbsp;&nbsp;18&nbsp;&nbs=
+p;&nbsp;17&nbsp;&nbsp;&nbsp;14
+                    A0027&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;20&nbsp;&nbs=
+p;&nbsp;19&nbsp;&nbsp;&nbsp;19
+                    A0029&nbsp;&nbsp;&nbsp;18&nbsp;&nbsp;&nbsp;19&nbsp;&nbs=
+p;&nbsp;20&nbsp;&nbsp;&nbsp;19
+                    A0018&nbsp;&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;18&nbsp;&nbs=
+p;&nbsp;12&nbsp;&nbsp;&nbsp;20
+                    A0037&nbsp;&nbsp;&nbsp;18&nbsp;&nbsp;&nbsp;19&nbsp;&nbs=
+p;&nbsp;16&nbsp;&nbsp;&nbsp;20
+                    A0023&nbsp;&nbsp;&nbsp;19&nbsp;&nbsp;&nbsp;13&nbsp;&nbs=
+p;&nbsp;14&nbsp;&nbsp;&nbsp;15
+                    A0019&nbsp;&nbsp;&nbsp;18&nbsp;&nbsp;&nbsp;17&nbsp;&nbs=
+p;&nbsp;17&nbsp;&nbsp;&nbsp;20
+                    A0009&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;18&nbsp;&nbs=
+p;&nbsp;14&nbsp;&nbsp;&nbsp;12
+                    A0007&nbsp;&nbsp;&nbsp;13&nbsp;&nbsp;&nbsp;15&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18
+                    A0035&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;20&nbsp;&nbs=
+p;&nbsp;19&nbsp;&nbsp;&nbsp;19
+                    A0038&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;15&nbsp;&nbs=
+p;&nbsp;19&nbsp;&nbsp;&nbsp;19
+                    A0034&nbsp;&nbsp;&nbsp;19&nbsp;&nbsp;&nbsp;16&nbsp;&nbs=
+p;&nbsp;19&nbsp;&nbsp;&nbsp;19
+                    A0003&nbsp;&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;18&nbsp;&nbs=
+p;&nbsp;18&nbsp;&nbsp;&nbsp;19
+                    A0010&nbsp;&nbsp;&nbsp;14&nbsp;&nbsp;&nbsp;17&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15
+                    A0013&nbsp;&nbsp;&nbsp;15&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp=
+;&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;&nbsp;8
+                    A0006&nbsp;&nbsp;&nbsp;19&nbsp;&nbsp;&nbsp;20&nbsp;&nbs=
+p;&nbsp;19&nbsp;&nbsp;&nbsp;19
+                    A0004&nbsp;&nbsp;&nbsp;15&nbsp;&nbsp;&nbsp;18&nbsp;&nbs=
+p;&nbsp;20&nbsp;&nbsp;&nbsp;17
+                    A0028&nbsp;&nbsp;&nbsp;19&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp=
+;&nbsp;&nbsp;20&nbsp;&nbsp;&nbsp;20
+                    A0026&nbsp;&nbsp;&nbsp;13&nbsp;&nbsp;&nbsp;19&nbsp;&nbs=
+p;&nbsp;18&nbsp;&nbsp;&nbsp;19
+                    A0025&nbsp;&nbsp;&nbsp;19&nbsp;&nbsp;&nbsp;13&nbsp;&nbs=
+p;&nbsp;17&nbsp;&nbsp;&nbsp;18
+                    A0016&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;19&nbsp;&nbs=
+p;&nbsp;13&nbsp;&nbsp;&nbsp;19
+                    A0015&nbsp;&nbsp;&nbsp;15&nbsp;&nbsp;&nbsp;13&nbsp;&nbs=
+p;&nbsp;18&nbsp;&nbsp;&nbsp;14
+                    A0017&nbsp;&nbsp;&nbsp;11&nbsp;&nbsp;&nbsp;13&nbsp;&nbs=
+p;&nbsp;15&nbsp;&nbsp;&nbsp;11
+                    A0014&nbsp;&nbsp;&nbsp;17&nbsp;&nbsp;&nbsp;17&nbsp;&nbs=
+p;&nbsp;12&nbsp;&nbsp;&nbsp;12
+                   =20
+                    A0001&nbsp;&nbsp;&nbsp;13&nbsp;&nbsp;&nbsp;15&nbsp;&nbs=
+p;&nbsp;14&nbsp;&nbsp;&nbsp;11
+                    </pre>
+   =20
+
+</body></html>
+------MultipartBoundary--7Co2eacJNm3XwjHWkTiEKMJvjtcIH7vyMz6us8Ihmb------
