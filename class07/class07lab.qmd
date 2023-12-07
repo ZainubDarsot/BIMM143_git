@@ -1,0 +1,236 @@
+---
+title: "Class07Lab"
+author: "Darsot (PID: A16294217)"
+format: pdf
+---
+
+First, read the file that includes the data for the lab: 
+```{r}
+url <- "https://tinyurl.com/UK-foods"
+x <- read.csv(url)
+x
+```
+
+
+###Question 1: How many rows and columns are in your new data named x? What R functions could you use to answer this question?
+
+```{r}
+dim(x)
+```
+
+##Checking your data: 
+Use the `view()` function to see all data in a new tab. Or use `head()` or `tail()` to preview the first/last 6 rows.  
+
+#Preview the first 6 rows: 
+```{r}
+head(x)
+```
+
+#Fix the code using `rownames()` to rename the first column properly: 
+```{r}
+rownames(x) <- x[,1]
+x <- x[,-1]
+head(x)
+```
+
+```{r}
+dim(x)
+```
+
+#Another approach: 
+x <- read.csv(url, row.names=1)
+head(x)
+
+
+###Question 2: Which approach to solving the ‘row-names problem’ mentioned above do you prefer and why? Is one approach more robust than another under certain circumstances?
+
+I would prefer the second approach, re-reading the data file and setting the row names as the first column. Running the first approach code block (x <- x[,-1]) multiple times would remove additional columns from the dataset. 
+
+###Spotting major differences and trends:
+```{r}
+barplot(as.matrix(x), beside=T, col=rainbow(nrow(x)))
+```
+
+###Question3: Changing what optional argument in the above barplot() function results in the following plot 
+
+```{r}
+barplot(as.matrix(x), beside=F, col=rainbow(nrow(x)))
+```
+Changing the optional argument `beside` from TRUE to FALSE. False displays it so that the data is stacked instead of side-by-side.  
+
+###Question5: Generating all pairwise plots may help somewhat. Can you make sense of the following code and resulting figure? What does it mean if a given point lies on the diagonal for a given plot? 
+
+```{r}
+pairs(x, col=rainbow(10), pch=16)
+```
+
+The above is a scatter plot that represents the relationship between two pairs in 'x'. The diagonal represents the variables plotted against itself, so if there is a dot on the diagonal it means the y-value and x-value are the same.
+
+
+###Question6: What is the main differences between N. Ireland and other countries of the UK in terms of this data-set?
+
+The main difference between N. Ireland and other countries is that N. Ireland is more clustered near the 500 mark.
+
+##PCA to the rescue: `prcomp()` function can be used for PCA inmplementation. 
+
+```{r}
+pca <- prcomp (t(x))
+summary(pca)
+```
+
+
+###Question7: Complete the code below to generate a plot of PC1 vs PC2. The second line adds text labels over the data points.
+
+```{r}
+plot(pca$x[,1], pca$x[,2], xlab="PC1", ylab="PC2",xlim=c(-300,500))
+text(pca$x[,1], pca$x[,2], colnames(x))
+```
+
+###Question8: Customize your plot so that the colors of the country names match the colors in our UK and Ireland map and table at start of this document.
+
+```{r}
+country_colors <- c("orange", "pink", "lime green", "light green")
+plot(pca$x[,1], pca$x[,2], xlab="PC1", ylab="PC2", xlim=c(-270,500))
+text(pca$x[,1], pca$x[,2], colnames(x), col=country_colors)
+```
+
+##Calculating standard deviation: 
+```{r}
+v <- round( pca$sdev^2/sum(pca$sdev^2)*100)
+v
+```
+
+```{r}
+z <- summary(pca)
+z$importance
+```
+
+```{r}
+barplot(v, xlab="Principal Component", ylab="Percent Variation")
+
+```
+
+##Digging Deeper(variabele loadings): 
+```{r}
+par(mar=c(10, 3, 0.35, 0))
+barplot( pca$rotation[,1], las=2 )
+```
+
+###Question9: Generate a similar ‘loadings plot’ for PC2. What two food groups feature prominantely and what does PC2 maninly tell us about?
+```{r}
+par(mar=c(10, 3, 0.35, 0))
+barplot( pca$rotation[,2], las=2 )
+```
+The largest positive loading score is Soft Drinks. The largest negative score is Fresh potatoes. PC2 mainly tells us about what food groups are pushing other countries to the right or left side of the plot.  
+
+##Biplots: 
+
+```{r}
+biplot(pca)
+```
+
+
+##PCA of RNA-seq data: 
+Read the data frame for a small RNA-seq count data set.
+
+```{r}
+url2 <- "https://tinyurl.com/expression-CSV"
+rna.data <- read.csv(url2, row.names=1)
+head(rna.data)
+```
+###Question10: How many genes and samples are in this data set?
+If the samples are columns and the genes are rows, there are 6 genes and 10 samples in this set. 
+
+#Consider doing a PCA to better interpret the data: 
+
+```{r}
+#Begin by transposig the data: 
+
+pca <- prcomp(t(rna.data), scale=T)
+
+#Plot 
+
+plot(pca$x[,1], pca$x[,2], xlab="PC1", ylab="PC2")
+```
+
+Examine the summary of the pca: 
+```{r}
+summary(pca)
+```
+
+Obtain Bar plot: 
+
+```{r}
+plot(pca, main="Quick scree plot")
+```
+
+Use `pca$sdev` to calculate variation: 
+
+```{r}
+#Variation: 
+pca.var <- pca$sdev^2
+
+#Percent variance: 
+pca.var.per <- round(pca.var/sum(pca.var)*100, 1)
+pca.var.per
+```
+
+Generate Scree plot again using above data: 
+
+```{r}
+barplot(pca.var.per, main="Scree Plot", 
+        names.arg = paste0("PC", 1:10),
+        xlab="Principal Component", ylab="Percent Variation")
+```
+
+Now to make it colorful: 
+
+```{r}
+#Add vector for colors: 
+
+colvec <- colnames(rna.data)
+colvec[grep("wt", colvec)] <- "pink"
+colvec[grep("ko", colvec)] <- "green"
+
+plot(pca$x[,1], pca$x[,2], col=colvec, pch=16,
+     xlab=paste0("PC1 (", pca.var.per[1], "%)"),
+     ylab=paste0("PC2 (", pca.var.per[2], "%)"))
+
+text(pca$x[,1], pca$x[,2], labels = colnames(rna.data), pos=c(rep(4,5), rep(2,5)))
+```
+
+
+#Using ggplot: 
+
+create data frame for ggplot input with PCA results. 
+
+```{r}
+library(ggplot2)
+df <- as.data.frame(pca$x)
+
+ggplot(df) + 
+  aes(PC1, PC2) + 
+  geom_point()
+```
+
+Add conditions: 
+
+```{r}
+df$samples <- colnames(rna.data) 
+df$condition <- substr(colnames(rna.data),1,2)
+
+p <- ggplot(df) + 
+        aes(PC1, PC2, label=samples, col=condition) + 
+        geom_label(show.legend = FALSE)
+p
+```
+
+```{r}
+p + labs(title="PCA of RNA-Seq Data",
+       subtitle = "PC1 seperates wild-type from knock-out samples",
+       x=paste0("PC1 (", pca.var.per[1], "%)"),
+       y=paste0("PC2 (", pca.var.per[2], "%)"),
+       caption="Class example data") +
+     theme_bw()
+```
+
